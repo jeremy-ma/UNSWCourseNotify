@@ -62,7 +62,7 @@ app.post('/classes/checkout', function(req, res){
 			res.json(out);
 			return;
 		}
-		var sql='SELECT * FROM sections';
+		var sql='INSERT INTO users (email) VALUES (%s)';
 		connection.query(sql,[],function(err,result){
 			connection.release();
 			if(err){

@@ -18,7 +18,7 @@ var app=function(){
 					'<span class="fa fa-comment"></span>',
 					'<span class="title">UNSW class notify</span>',
 				'</div>',
-				'<input class="text" placeholder="Your email address"/>',
+				'<input class="text" id="email" placeholder="Your email address"/>',
 				'<input class="search text" placeholder="Search for classes"/>',
 				'<div class="scrollableView">',
 					'<div id="class_list">',
@@ -150,10 +150,15 @@ var app=function(){
 		$('div.course_basket').html(htmlString);
 	}
 	this.checkout=function(){
+		//get email
+		var email=$('#email').val();
 		//send the basket
 		$.ajax({
 			url:BASE_URL+'api/classes/checkout',
-			data:{'results':that.savedResults},
+			data:{
+				'email':email,
+				'results':that.savedResults
+			},
 			type:"POST",
 			success:function(data){
 				console.log('data sent successfully');
