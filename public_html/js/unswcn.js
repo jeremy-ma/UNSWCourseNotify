@@ -36,7 +36,7 @@ var app=function(){
 		}).on('click','#class_list>ul>li',function(){
 			var index=$(this).index();
 			var c=that.data.classes[that.resultList[index]];
-			that.clicked_result(c);
+			that.clicked_result(c,$(this));
 		});
 
 
@@ -98,7 +98,7 @@ var app=function(){
 			var c=this.data.classes[results[i]];
 			htmlString+=[
 				'<li>',
-					'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
+					'<span>'+c.course_code+' ['+c.type+'] '+c.section_time+'</span>',
 					'<span class="clear">'+c.course_name+'</span>',
 					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
 				'</li>'
@@ -108,11 +108,14 @@ var app=function(){
 		this.resultList=results;
 		$('#class_list ul').html(htmlString);
 	}
-	this.clicked_result=function(c){
+	this.clicked_result=function(c,obj){
 		console.log('adding to basket:'+c.id);
 		//add only if not already in results
 		if(this.savedResults.indexOf(c.id)==-1){
 			this.savedResults.push(c.id);
+			obj.addClass('active');
+		}else{
+			obj.removeClass('active');
 		}
 		console.log(this.savedResults);
 	}
