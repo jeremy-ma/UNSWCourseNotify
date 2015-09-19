@@ -57,7 +57,7 @@ app.post('/classes/checkout', function(req, res){
 	var p=req.body;
 
 	if(is_empty(p.email,p.results)){
-		out['error']='Invalid usage or no classes selected';
+		out['error']='A field is missing!';
 		res.json(out);
 		return;
 	}
