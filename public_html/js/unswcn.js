@@ -58,8 +58,8 @@ var app=function(){
 			var c=classes[i];
 			htmlString+=[
 				'<li>',
-					'<h4>'+c.course_code+' '+c.type+'</h4>',
-					'<span>'+c.course_name+'</span>',
+					'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
+					'<span class="clear">'+c.course_name+'</span>',
 					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
 				'</li>'
 			].join('');
