@@ -6,25 +6,8 @@ $(document).on('ready',function(){
 });
 
 var app=function(){
+	var that=this;
 	this.init=function(){
-		console.log('app initialised');
-		$.ajax({
-			url:BASE_URL+'api/classes',
-			//data:{},
-			type:"POST",
-			success:function(data){
-				console.log('data sent successfully');
-				if(typeof data.error=='undefined'){
-					//good nothing broke perform actions
-				}else{
-					//display the error
-					//warning(data.error);
-				}
-			},
-			error:function(){
-				console.log('there was an error with the request');
-			}
-		});
 		var htmlString=[
 			'<div id="app">',
 				'<div class="header">',
@@ -40,6 +23,34 @@ var app=function(){
 			'</div>',
 		].join('');
 		$('body').append(htmlString);
+
+
+		$.ajax({
+			url:BASE_URL+'api/classes',
+			//data:{},
+			type:"POST",
+			success:function(data){
+				console.log('data sent successfully');
+				if(typeof data.error=='undefined'){
+					//good nothing broke perform actions
+					that.renderClasses();
+				}else{
+					//display the error
+					//warning(data.error);
+				}
+			},
+			error:function(){
+				console.log('there was an error with the request');
+			}
+		});
+	}
+	this.renderClasses=function(){
+		var htmlString='<ul>';
+		htmlString+=[
+
+		].join('');
+		htmlString+='</ul>';
+		$('#class_list').html(htmlString);
 	}
 	this.init();
 }
