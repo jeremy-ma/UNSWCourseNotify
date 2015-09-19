@@ -73,6 +73,7 @@ def scrape_everything(semester):
     r = requests.get(url)
     data = r.text
     soup = BeautifulSoup(data)
+    sectionlist = []
 
     for row in soup.findAll('tr'):
         clas = row.get('class')
@@ -92,7 +93,10 @@ def scrape_everything(semester):
         if column.find('a') is not None:
             link = column.find('a').get('href')
             subject_url = url + link
-            scrape_subject(subject_url,semester)
+            sectionlist.append(scrape_subject(subject_url,semester))
+
+    return sectionlist
+
 
 
 
