@@ -16,7 +16,8 @@ var app=function(){
 					'<span class="fa fa-comment"></span>',
 					'<span class="title">UNSW class notify</span>',
 				'</div>',
-				'<input class="search" placeholder="Search for classes"/>',
+				'<input class="text" placeholder="Your email address"/>',
+				'<input class="search text" placeholder="Search for classes"/>',
 				'<div class="scrollableView">',
 					'<div id="class_list">',
 						'<ul></ul>',
@@ -32,7 +33,7 @@ var app=function(){
 		}).on('click','#class_list>ul>li',function(){
 			var index=$(this).index();
 			var c=that.data.classes[that.resultList[index]];
-			console.log(c);
+			that.clicked_result(c);
 		});
 
 
@@ -81,6 +82,9 @@ var app=function(){
 			if(pattern.test(c.course_code)){
 				results.push(i);
 			}
+			if(results.length>6){
+				break;
+			}
 		}
 		if(query.length==0){
 			results=[];
@@ -100,6 +104,9 @@ var app=function(){
 
 		this.resultList=results;
 		$('#class_list ul').html(htmlString);
+	}
+	this.clicked_result=function(c){
+
 	}
 	this.init();
 }
