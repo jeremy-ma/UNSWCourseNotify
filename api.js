@@ -78,17 +78,26 @@ app.post('/classes/checkout', function(req, res){
 		}
 		var sql='INSERT INTO users (email) VALUES (?) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);';
 		connection.query(sql,[p.email],function(err,result){
-			connection.release();
 			if(err){
+				connection.release();
 				out['error']='There was a problem.';
 				console.log(err);
-				console.log(out);
 				res.json(out);
 				return;
 			}
 			var u_id=result.insertId;
-			console.log(out);
-			res.json(out);
+			var sql='INSERT INTO user_courses (u_id,section_id) VALUES ? ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);';
+			connection.query(sql,insertArray,function(err,result){
+				connection.release();
+				if(err){
+					out['error']='There was a problem.';
+					console.log(err);
+					res.json(out);
+					return;
+				}
+				console.log(out);
+				res.json(out);
+			});
 		});
 	});
 });
