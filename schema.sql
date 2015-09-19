@@ -4,6 +4,7 @@ CREATE TABLE `sections` (
 	`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`course_code` varchar(300) NOT NULL,
 	`course_name` varchar(3000) NOT NULL,
+	`section_code` varchar(300) NOT NULL,
 	`sem` varchar(300) NOT NULL,
 	`type` varchar(3000),
 	`enr_max` int(11) NOT NULL,
