@@ -27,8 +27,6 @@ LEFT JOIN sections ON user_courses.section_id=sections.id")
         cursor.execute(query,())
         rows=cursor.fetchall()
 
-
-
     except mysql.connector.Error as err:
         print err
         db.rollback()
@@ -73,6 +71,5 @@ def insertList(l):
 
 if __name__ == '__main__':
     #url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
-    #l = scrape_everything('s2')
-    #insertList(l)
-    get_watchlist()
+    l = scrape_everything('s2')
+    insertList(l)
