@@ -73,3 +73,8 @@ var app=function(){
 	}
 	this.init();
 }
+
+
+function regexEscape(str) {
+    return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+}
