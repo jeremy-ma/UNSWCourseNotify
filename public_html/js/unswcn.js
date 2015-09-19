@@ -60,6 +60,7 @@ var app=function(){
 				'<li>',
 					'<h4>'+c.course_code+' '+c.type+'</h4>',
 					'<span>'+c.course_name+'</span>',
+					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
 				'</li>'
 			].join('');
 		}

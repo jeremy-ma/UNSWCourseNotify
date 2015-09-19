@@ -63,6 +63,10 @@ div.scrollableView h1{
 #class_list ul li{
 	padding-left: 15px;
 }
+#class_list ul li span.clear{
+	padding-left: 15px;
+	display:block;
+}
 
 
 
