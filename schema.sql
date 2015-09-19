@@ -32,3 +32,13 @@ CREATE TABLE `user_courses` (
 	UNIQUE(`u_id`,`section_id`),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `user_courses_log`;
+CREATE TABLE `user_courses` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`u_id` int(11) NOT NULL,
+	`section_id` int(11) NOT NULL,
+	UNIQUE(`u_id`,`section_id`),
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
