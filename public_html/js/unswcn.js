@@ -19,7 +19,7 @@ var app=function(){
 				'<input class="search" placeholder="Search for classes"/>',
 				'<div class="scrollableView">',
 					'<div id="class_list">',
-						'<h1>Loading classes</h1>',
+						'<ul></ul>',
 					'</div>',
 				'</div>',
 			'</div>',
@@ -46,7 +46,7 @@ var app=function(){
 					//good nothing broke perform actions
 					//save data
 					that.data=data;
-					that.renderClasses();
+					//that.renderClasses();
 				}else{
 					//display the error
 					//warning(data.error);
@@ -82,6 +82,9 @@ var app=function(){
 				results.push(i);
 			}
 		}
+		if(query.length==0){
+			results=[];
+		}
 		//update visiblity
 		htmlString='';
 		for(var i=0;i<results.length;i++){
@@ -94,6 +97,7 @@ var app=function(){
 				'</li>'
 			].join('');
 		}
+
 		this.resultList=results;
 		$('#class_list ul').html(htmlString);
 	}
