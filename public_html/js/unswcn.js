@@ -9,6 +9,7 @@ var app=function(){
 	var that=this;
 	this.data={};
 	this.resultList=[];
+	this.savedResults=[];
 	this.init=function(){
 		var htmlString=[
 			'<div id="app">',
@@ -23,7 +24,8 @@ var app=function(){
 						'<ul></ul>',
 					'</div>',
 				'</div>',
-				'<div class="submit">Notify me for 3 classes</div>',
+				'<div class="course_basket"></div>',
+				'<div class="submit">Notify me!</div>',
 			'</div>',
 		].join('');
 		$('body').append(htmlString);
@@ -83,15 +85,15 @@ var app=function(){
 			if(pattern.test(c.course_code)){
 				results.push(i);
 			}
-			if(results.length>6){
+			if(results.length>10){
 				break;
 			}
 		}
-		if(query.length==0){
+		var htmlString='';
+		if(query.length==0||results.length==0){
 			results=[];
+			htmlString+='<h1>No results!</h1>';
 		}
-		//update visiblity
-		htmlString='';
 		for(var i=0;i<results.length;i++){
 			var c=this.data.classes[results[i]];
 			htmlString+=[
@@ -107,7 +109,7 @@ var app=function(){
 		$('#class_list ul').html(htmlString);
 	}
 	this.clicked_result=function(c){
-
+		console.log('adding to basket:'+c.id);
 	}
 	this.init();
 }

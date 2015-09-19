@@ -26,7 +26,7 @@ body{
 	line-height: 50px;
 }
 div.scrollableView{
-    bottom: 50px;
+    bottom: 150px;
     overflow-y: auto;
     position: absolute;
     top: 130px;
@@ -80,6 +80,21 @@ div.submit{
     cursor: pointer;
     font-family: "GillSansMTProLight";
     height: 50px;
+    left: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
+}
+
+div.course_basket{
+	background:#aad7b0;
+    bottom: 50px;;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: "GillSansMTProLight";
+    height: 100px;
     left: 0;
     line-height: 50px;
     position: absolute;
