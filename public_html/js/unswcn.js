@@ -51,9 +51,10 @@ var app=function(){
 					//good nothing broke perform actions
 					//save data
 					that.data=data;
-					//hash classes
+
+					//hash classes for quick access
 					var class_hash={};
-					for(var i=0;i<that.data.classes;i++){
+					for(var i=0;i<that.data.classes.length;i++){
 						var c=that.data.classes[i];
 						class_hash[c.id]=c;
 					}
@@ -138,9 +139,9 @@ var app=function(){
 	this.updateBasket=function(){
 		var htmlString='<ul>';
 		for(var i=0;i<this.savedResults.length;i++){
-			var c=this.data.classes[i];
+			var c=this.class_hash[this.savedResults[i]];
 			htmlString+=[
-				'<li>'+c+'</li>',
+				'<li>'+c.course_code+'</li>',
 			].join('');
 		}
 		htmlString+='</ul>';
