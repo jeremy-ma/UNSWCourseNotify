@@ -56,6 +56,12 @@ app.post('/classes/checkout', function(req, res){
 	var out={};
 	var p=req.body;
 
+	if(is_empty(p.email,p.results)){
+		out['error']='Invalid usage or no classes selected';
+		res.json(out);
+		return;
+	}
+
 	//validate email
 	if(!validator.isEmail(p.email)){
 		out['error']='Invalid email';
@@ -70,8 +76,8 @@ app.post('/classes/checkout', function(req, res){
 			res.json(out);
 			return;
 		}
-		var sql='INSERT INTO users (email) VALUES (%s)';
-		connection.query(sql,[],function(err,result){
+		var sql='INSERT INTO users (email) VALUES (%s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);';
+		connection.query(sql,[p.email],function(err,result){
 			connection.release();
 			if(err){
 				out['error']='There was a problem.';
@@ -79,13 +85,20 @@ app.post('/classes/checkout', function(req, res){
 				res.json(out);
 				return;
 			}
-			out['classes']=result;
+			var u_id=result.insertId;
 			console.log(out);
 			res.json(out);
 		});
 	});
 });
 
-
+function is_empty(){
+	for (var i = 0; i < arguments.length; i++) {
+		if(typeof arguments[i]=='undefined'||arguments[i]==null||arguments[i].length==0){
+			return true;
+		}
+	}
+	return false;
+}
 
 app.listen(5050);
