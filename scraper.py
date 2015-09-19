@@ -4,7 +4,7 @@ import pdb
 import re
 
 
-def scrape_subject(url):
+def scrape_subject(url, semester):
 
     r = requests.get(url)
     data = r.text
@@ -46,6 +46,7 @@ def scrape_subject(url):
                 section_dict['num_enrolled'] = enrolled
                 section_dict['capacity'] = capacity
                 section_dict['time'] = time
+                section_dict['semester'] = semester
 
                 sectionlist.append(section_dict)
 
@@ -76,5 +77,5 @@ if __name__ == '__main__':
 
     url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
 
-    scrape_subject(url)
+    scrape_subject(url,'s2')
 
