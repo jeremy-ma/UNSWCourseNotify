@@ -4,5 +4,8 @@ $(document).on('ready',function(){
 });
 
 var app=function(){
-	
+	this.init=function(){
+		console.log('app initialised');
+	}
+	this.init();
 }
