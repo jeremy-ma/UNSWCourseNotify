@@ -96,7 +96,7 @@ var app=function(){
 			if(pattern.test(c.course_code)){
 				results.push(i);
 			}
-			if(results.length>10){
+			if(results.length>50){
 				break;
 			}
 		}
