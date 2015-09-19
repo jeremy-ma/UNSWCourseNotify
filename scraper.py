@@ -141,5 +141,5 @@ if __name__ == '__main__':
 
     url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
 
-    scrape_everything('s2')
-
+    l = scrape_everything('s2')
+    insertList(l)
