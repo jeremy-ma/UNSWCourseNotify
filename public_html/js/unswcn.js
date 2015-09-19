@@ -53,7 +53,7 @@ var app=function(){
 					//that.renderClasses();
 				}else{
 					//display the error
-					//warning(data.error);
+					warning(data.error);
 				}
 			},
 			error:function(){
@@ -122,6 +122,9 @@ var app=function(){
 	this.init();
 }
 
+function warning(message){
+	alert(message);
+}
 
 function regexEscape(str) {
     return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
