@@ -8,6 +8,7 @@ $(document).on('ready',function(){
 var app=function(){
 	var that=this;
 	this.data={};
+	this.resultList=[];
 	this.init=function(){
 		var htmlString=[
 			'<div id="app">',
@@ -28,6 +29,10 @@ var app=function(){
 		$('#app').on('input','input.search',function(){
 			var q=$(this).val();
 			that.searchClasses(q);
+		}).on('click','#class_list>ul>li',function(){
+			var index=$(this).index();
+			var c=that.data.classes[that.resultList[index]];
+			console.log(c);
 		});
 
 
@@ -58,7 +63,7 @@ var app=function(){
 		for(var i=0;i<classes.length;i++){
 			var c=classes[i];
 			htmlString+=[
-				'<li>',
+				'<li data-id="'+c.id+'">',
 					'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
 					'<span class="clear">'+c.course_name+'</span>',
 					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
@@ -89,6 +94,7 @@ var app=function(){
 				'</li>'
 			].join('');
 		}
+		this.resultList=results;
 		$('#class_list ul').html(htmlString);
 	}
 	this.init();
