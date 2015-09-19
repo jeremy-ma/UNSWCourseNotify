@@ -69,7 +69,22 @@ var app=function(){
 		$('#class_list').html(htmlString);
 	}
 	this.searchClasses=function(query){
-		console.log(query);
+		var results=[];
+		var pattern=new RegExp('^'+regexEscape(query),'i');
+		for(var i=0;i<this.data.classes.length;i++){
+			var c=this.data.classes[i];
+			if(pattern.test(c.course_code)){
+				results.push(i);
+			}
+		}
+		//update visiblity
+		$('#class_list ul>li').each(function( index ){
+			if(results.indexOf(index)!=-1){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+		});
 	}
 	this.init();
 }
