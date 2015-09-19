@@ -118,6 +118,8 @@ def getmatches(watchl):
         except:
             print "catastrophic error"
 
+    return matched_users
+
 
 
 
