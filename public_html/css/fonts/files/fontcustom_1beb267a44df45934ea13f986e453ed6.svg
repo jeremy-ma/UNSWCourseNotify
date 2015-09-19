@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2015-5-2: Created with FontForge (http://fontforge.org)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<metadata>
+Created by FontForge 20141231 at Sat May  2 12:06:54 2015
+ By Matthew Duong
+Copyright (c) 2015, Matthew Duong
+</metadata>
+<defs>
+<font id="fontcustom" horiz-adv-x="200" >
+  <font-face 
+    font-family="fontcustom"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="512"
+    panose-1="2 0 5 3 0 0 0 0 0 0"
+    ascent="448"
+    descent="-64"
+    bbox="10.2402 -54.7842 501.76 436.736"
+    underline-thickness="25.6"
+    underline-position="-51.2"
+    unicode-range="U+0020-F100"
+  />
+    <missing-glyph />
+    <glyph glyph-name="space" unicode=" " 
+ />
+    <glyph glyph-name="uniF100" unicode="&#xf100;" horiz-adv-x="512" 
+d="M432.757 265.728h69.0029v-279.552c0 -22.6221 -18.3379 -40.96 -40.96 -40.96h-409.6c-22.6211 0 -40.96 18.3379 -40.96 40.96v279.552h68.6504l80.9062 -201.728h24.6943l71.373 163.262l71.0225 -163.262h24.6943zM118.784 317.952h-108.544v77.8242
+c0 22.6211 18.3389 40.96 40.96 40.96h409.6c22.6221 0 40.96 -18.3389 40.96 -40.96v-77.8242h-109.567v-1.02441h0.333008l-54.8018 -138.332l-57.8613 138.332h-47.0088l-59.1973 -138.332l-54.4648 138.332h-0.407227v1.02441z" />
+  </font>
+</defs></svg>
