@@ -26,7 +26,7 @@ body{
 	line-height: 50px;
 }
 div.scrollableView{
-    bottom: 0;
+    bottom: 50px;
     overflow-y: auto;
     position: absolute;
     top: 130px;
@@ -71,6 +71,21 @@ div.scrollableView h1{
 #class_list ul li span.clear{
 	padding-left: 15px;
 	display:block;
+}
+div.submit{
+	background: #55c989 none repeat scroll 0 0;
+    bottom: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "GillSansMTProLight";
+    height: 50px;
+    left: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
 }
 
 

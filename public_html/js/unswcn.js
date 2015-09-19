@@ -23,6 +23,7 @@ var app=function(){
 						'<ul></ul>',
 					'</div>',
 				'</div>',
+				'<div class="submit">Notify me for 3 classes</div>',
 			'</div>',
 		].join('');
 		$('body').append(htmlString);
