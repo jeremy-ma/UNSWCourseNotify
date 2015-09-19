@@ -76,11 +76,12 @@ app.post('/classes/checkout', function(req, res){
 			res.json(out);
 			return;
 		}
-		var sql='INSERT INTO users (email) VALUES (%s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);';
+		var sql='INSERT INTO users (email) VALUES (?) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);';
 		connection.query(sql,[p.email],function(err,result){
 			connection.release();
 			if(err){
 				out['error']='There was a problem.';
+				console.log(err);
 				console.log(out);
 				res.json(out);
 				return;
