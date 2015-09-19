@@ -25,6 +25,10 @@ var app=function(){
 		].join('');
 		$('body').append(htmlString);
 
+		$('#app').on('input','input.search',function(){
+			var q=$(this).val();
+		});
+
 
 		$.ajax({
 			url:BASE_URL+'api/classes',

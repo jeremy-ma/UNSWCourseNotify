@@ -60,7 +60,9 @@ div.scrollableView h1{
 	margin:0;
 	list-style: none;
 }
-
+#class_list ul li{
+	padding-left: 15px;
+}
 
 
 
