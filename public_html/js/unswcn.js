@@ -7,6 +7,7 @@ $(document).on('ready',function(){
 
 var app=function(){
 	var that=this;
+	this.data={};
 	this.init=function(){
 		var htmlString=[
 			'<div id="app">',
@@ -33,6 +34,8 @@ var app=function(){
 				console.log('data sent successfully');
 				if(typeof data.error=='undefined'){
 					//good nothing broke perform actions
+					//save data
+					that.data=data;
 					that.renderClasses();
 				}else{
 					//display the error
@@ -45,10 +48,16 @@ var app=function(){
 		});
 	}
 	this.renderClasses=function(){
+		var classes=this.data.classes;
 		var htmlString='<ul>';
-		htmlString+=[
-
-		].join('');
+		for(var i=0;i<classes.length;i++){
+			var c=classes[i];
+			htmlString+=[
+				'<li>',
+					c.course_code,
+				'</li>'
+			].join('');
+		}
 		htmlString+='</ul>';
 		$('#class_list').html(htmlString);
 	}
