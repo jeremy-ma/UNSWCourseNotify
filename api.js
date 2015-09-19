@@ -45,7 +45,6 @@ app.post('/classes', function(req, res){
 				return;
 			}
 			out['classes']=result;
-			console.log(out);
 			res.json(out);
 		});
 	});
