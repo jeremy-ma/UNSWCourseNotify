@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 import pdb
 import re
-import mysql.connector
 
 
 def scrape_subject(url, semester):
@@ -24,7 +23,7 @@ def scrape_subject(url, semester):
             row = section.findNext('tr')
 
             while row != None and check_end(row) is False:
-
+                #print row.text
                 columns = row.findAll("td")
 
                 type_ = columns[0].text
@@ -50,20 +49,22 @@ def scrape_subject(url, semester):
                 section_dict['semester'] = semester
 
                 sectionlist.append(section_dict)
+                #pdb.set_trace()
+
 
                 row = row.findNext('tr')
 
     return sectionlist
+
+
+
 
 def check_end(row):
     # check the row if its past the end of the subject
     clas = row.get('class')
     if clas != None:
         clas = clas[0]
-    if clas!= 'rowHighlight' and clas != 'rowLowLight':
-        return True
-    elif row.find('a') is not None and  row.find('a').get('href') == '#top':
-        # check for the '^ top ^' hyperlink
+    if clas != 'rowHighlight' and clas != 'rowLowlight':
         return True
     else:
         return False
@@ -99,47 +100,9 @@ def scrape_everything(semester):
 
 
 
-
-#insert data
-def insertList(l):
-    #connect to database
-
-    config = {
-        'user': 'unswcn',
-        'password': 'password',
-        'host': 'localhost',
-        'database': 'unswcn',
-        'raise_on_warnings': True
-    }
-    db = mysql.connector.connect(**config)
-
-    cursor = db.cursor()
-    #begin insertion of data
-    try:
-        for section in l:
-            #insert uts into the list of organisations
-            query=("INSERT INTO sections (course_code,course_name, section_code, sem, type, enr_max, enr_count, status) VALUES(%s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
-            cursor.execute(query,(
-                section['course_code'], section['course_name'],section['id'], section['semester'],section['type'],section['enr_max'],section['enr_count'],section['status']
-                ))
-
-
-
-    except mysql.connector.Error as err:
-        print err
-        db.rollback()
-        sys.exit()
-
-    db.commit()
-
-
-    cursor.close()
-    db.close()
-
-
 if __name__ == '__main__':
 
     url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
 
     l = scrape_everything('s2')
-    insertList(l)
+    print l
