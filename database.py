@@ -40,6 +40,7 @@ LEFT JOIN sections ON user_courses.section_id=sections.id")
     return rows
 
 def removeUsers(users):
+    
     return
 #insert data
 def insertList(l):

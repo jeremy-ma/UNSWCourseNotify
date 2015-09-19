@@ -102,7 +102,7 @@ def scrape_everything(semester):
 
     return sectionlist
 
-def check_watchlist(watchl):
+def getwatchlist(watchl):
     sections = scrape_everything(current_semester)
     catalog = defaultdict(dict)
     matched_users = []
