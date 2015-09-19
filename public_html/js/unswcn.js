@@ -1,3 +1,5 @@
+window.BASE_URL=location.protocol + '//' + location.host+'/';
+
 $(document).on('ready',function(){
 	console.log('jquery loaded!');
 	window.APP=new app();
@@ -6,6 +8,23 @@ $(document).on('ready',function(){
 var app=function(){
 	this.init=function(){
 		console.log('app initialised');
+		$.ajax({
+			url:BASE_URL+'api/classes',
+			//data:{},
+			type:"POST",
+			success:function(data){
+				console.log('data sent successfully');
+				if(typeof data.error=='undefined'){
+					//good nothing broke perform actions
+				}else{
+					//display the error
+					//warning(data.error);
+				}
+			},
+			error:function(){
+				console.log('there was an error with the request');
+			}
+		});
 		var htmlString=[
 			'<div id="app">',
 				'<div class="header">',
