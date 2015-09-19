@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import pdb
 import re
+import mysql.connector
 
 
 def scrape_subject(url, semester):
@@ -96,16 +97,40 @@ def scrape_everything(semester):
 
 
 #insert data
+def insertList(l):
+    #connect to database
 
-config = {
-    'user': 'unswcn',
-    'password': 'password',
-    'host': 'localhost',
-    'database': 'unswcn',
-    'raise_on_warnings': True
-}
-def insertList(list):
-    print 'hello world'
+    config = {
+        'user': 'unswcn',
+        'password': 'password',
+        'host': 'localhost',
+        'database': 'unswcn',
+        'raise_on_warnings': True
+    }
+    db = mysql.connector.connect(**config)
+
+    cursor = db.cursor()
+    #begin insertion of data
+    try:
+        for section in l:
+            #insert uts into the list of organisations
+            query=("INSERT INTO sections (course_code,course_name, sem, type, enr_max, enr_count, status) VALUES(%s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
+             cursor.execute(query,(
+
+                ))
+
+
+
+    except mysql.connector.Error as err:
+        print err
+        db.rollback()
+        sys.exit()
+
+    db.commit()
+
+
+    cursor.close()
+    db.close()
 
 
 if __name__ == '__main__':
