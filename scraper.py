@@ -44,8 +44,8 @@ def scrape_subject(url, semester):
                 section_dict['id'] = section_id
                 section_dict['type'] = type_
                 section_dict['status'] = status
-                section_dict['num_enrolled'] = enrolled
-                section_dict['capacity'] = capacity
+                section_dict['enr_count'] = enrolled
+                section_dict['enr_max'] = capacity
                 section_dict['time'] = time
                 section_dict['semester'] = semester
 
@@ -116,7 +116,8 @@ def insertList(l):
             #insert uts into the list of organisations
             query=("INSERT INTO sections (course_code,course_name, sem, type, enr_max, enr_count, status) VALUES(%s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
              cursor.execute(query,(
-
+                section['course_code'], section['course_name'],section['semester'],section['type'],
+                section['enr_max'],section['enr_count'],section['status']
                 ))
 
 
