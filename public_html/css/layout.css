@@ -127,9 +127,13 @@ div.course_basket ul li{
 	width:50%;
 	display: inline-block;
 }
+div.course_basket span{
+	line-height: 30px;
+}
 div.course_basket span.fa{
 	font-size:30px;
-	line-height: 100px;
+	line-height: 50px;
+	display:block;
 }
 
 @media screen and (min-width: 500px) {
