@@ -55,8 +55,20 @@ div.scrollableView h1{
     font-family:'GillSansMTProLight';
     font-size:18px;
 }
-
-
+#class_list ul{
+	padding:0;
+	margin:0;
+	list-style: none;
+}
+#class_list ul li{
+	padding-left: 15px;
+	border-bottom:1px solid #f2f2f2;
+	cursor:pointer;
+}
+#class_list ul li span.clear{
+	padding-left: 15px;
+	display:block;
+}
 
 
 

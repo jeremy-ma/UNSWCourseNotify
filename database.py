@@ -4,6 +4,10 @@ import pdb
 import re
 import mysql.connector
 from scraper import *
+
+def get_watchlist():
+    return 'hello world'
+
 #insert data
 def insertList(l):
     #connect to database
@@ -22,9 +26,9 @@ def insertList(l):
     try:
         for section in l:
             #insert uts into the list of organisations
-            query=("INSERT INTO sections (course_code,course_name, section_code, sem, type, enr_max, enr_count, status) VALUES(%s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
+            query=("INSERT INTO sections (course_code,course_name, section_code, sem, type, enr_max, enr_count, status, section_time) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
             cursor.execute(query,(
-                section['course_code'], section['course_name'],section['id'], section['semester'],section['type'],section['enr_max'],section['enr_count'],section['status']
+                section['course_code'], section['course_name'],section['id'], section['semester'],section['type'],section['enr_max'],section['enr_count'],section['status'],section['time']
                 ))
 
 
@@ -43,4 +47,4 @@ def insertList(l):
 if __name__ == '__main__':
     #url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
     l = scrape_everything('s2')
-    insertLIst(l)
+    insertList(l)
