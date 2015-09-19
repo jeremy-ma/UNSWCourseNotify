@@ -47,9 +47,11 @@ def scrape_subject(url):
                 section_dict['capacity'] = capacity
                 section_dict['time'] = time
 
-                print section_dict
+                sectionlist.append(section_dict)
 
                 row = row.findNext('tr')
+
+    return sectionlist
 
 
 
