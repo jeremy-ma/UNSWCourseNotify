@@ -93,7 +93,7 @@ def scrape_everything(semester):
         if column.find('a') is not None:
             link = column.find('a').get('href')
             subject_url = url + link
-            sectionlist.append(scrape_subject(subject_url,semester))
+            sectionlist.extend(scrape_subject(subject_url,semester))
 
     return sectionlist
 
