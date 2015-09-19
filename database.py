@@ -4,6 +4,10 @@ import pdb
 import re
 import mysql.connector
 from scraper import *
+
+def get_watchlist():
+    return 'hello world'
+
 #insert data
 def insertList(l):
     #connect to database
