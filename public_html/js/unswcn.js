@@ -8,6 +8,7 @@ $(document).on('ready',function(){
 var app=function(){
 	var that=this;
 	this.data={};
+	this.class_hash={};
 	this.resultList=[];
 	this.savedResults=[];
 	this.init=function(){
@@ -50,6 +51,13 @@ var app=function(){
 					//good nothing broke perform actions
 					//save data
 					that.data=data;
+					//hash classes
+					var class_hash={};
+					for(var i=0;i<that.data.classes;i++){
+						var c=that.data.classes[i];
+						class_hash[c.id]=c;
+					}
+					that.class_hash=class_hash;
 					//that.renderClasses();
 				}else{
 					//display the error
