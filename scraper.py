@@ -99,7 +99,6 @@ def scrape_everything(semester):
     return sectionlist
 
 
-
 if __name__ == '__main__':
 
     url = 'http://classutil.unsw.edu.au/ELEC_S2.html'

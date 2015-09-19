@@ -33,6 +33,10 @@ div.scrollableView{
     width: 100%;
 }
 
+div.scrollableView h1{
+	padding-left:15px;
+}
+
 #app input.search{
     border:none;
     border-left:15px solid #424242;
