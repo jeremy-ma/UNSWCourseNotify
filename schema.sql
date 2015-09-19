@@ -24,7 +24,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `user_courses`;
-CREATE TABLE `users_courses` (
+CREATE TABLE `user_courses` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`u_id` int(11) NOT NULL,
