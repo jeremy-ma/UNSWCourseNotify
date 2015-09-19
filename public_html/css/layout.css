@@ -127,6 +127,10 @@ div.course_basket ul li{
 	width:50%;
 	display: inline-block;
 }
+div.course_basket span.fa{
+	font-size:30px;
+	line-height: 100px;
+}
 
 @media screen and (min-width: 500px) {
     #app div.header {
