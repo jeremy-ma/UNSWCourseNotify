@@ -95,6 +95,19 @@ def scrape_everything(semester):
 
 
 
+#insert data
+
+config = {
+    'user': 'unswcn',
+    'password': 'password',
+    'host': 'localhost',
+    'database': 'unswcn',
+    'raise_on_warnings': True
+}
+def insertList(list):
+    print 'hello world'
+
+
 if __name__ == '__main__':
 
     url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
