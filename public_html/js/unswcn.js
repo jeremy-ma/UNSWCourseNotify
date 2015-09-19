@@ -29,20 +29,6 @@ var app=function(){
 			var q=$(this).val();
 			that.searchClasses(q);
 		});
-		/*$('input.search').typeahead({
-			source:this.data.classes,
-			items:6,
-			highligher=function(c){
-
-				return [
-					'<li>',
-						'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
-						'<span class="clear">'+c.course_name+'</span>',
-						'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
-					'</li>'
-				].join('');
-			}
-		});*/
 
 
 		$.ajax({
@@ -92,13 +78,18 @@ var app=function(){
 			}
 		}
 		//update visiblity
-		$('#class_list ul>li').each(function( index ){
-			if(results.indexOf(index)!=-1){
-				$(this).show();
-			}else{
-				$(this).hide();
-			}
-		});
+		htmlString='';
+		for(var i=0;i<results.length;i++){
+			var c=this.data.classes[results[i]];
+			htmlString+=[
+				'<li>',
+					'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
+					'<span class="clear">'+c.course_name+'</span>',
+					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
+				'</li>'
+			].join('');
+		}
+		$('#class_list ul').html(htmlString);
 	}
 	this.init();
 }
