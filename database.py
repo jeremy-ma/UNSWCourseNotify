@@ -40,6 +40,24 @@ LEFT JOIN sections ON user_courses.section_id=sections.id")
     return rows
 
 def removeUsers(users):
+    print '----removing users'
+    try:
+        query=("DELETE FROM user_courses WHERE user_courses.id=?")
+        for u in users:
+            cursor.execute(query,(u[0]))
+
+    except mysql.connector.Error as err:
+        print err
+        db.rollback()
+        sys.exit()
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+
+
 
     return
 #insert data

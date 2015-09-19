@@ -148,7 +148,7 @@ if __name__ == '__main__':
     print watchl
     matched_users = getmatches(watchl)
     for user in matched_users:
-        send_email(user)
+        #send_email(user)
         print 'sent email to'+ user[6]
         continue
 
