@@ -102,7 +102,7 @@ def scrape_everything(semester):
 
     return sectionlist
 
-def getwatchlist(watchl):
+def getmatches(watchl):
     sections = scrape_everything(current_semester)
     catalog = defaultdict(dict)
     matched_users = []
@@ -147,7 +147,7 @@ def send_email(user):
 if __name__ == '__main__':
 
     watchl = database.get_watchlist()
-    matched_users = getwatchlist(watchl)
+    matched_users = getmatches(watchl)
     for user in matched_users:
         #send_email(user)
         continue
