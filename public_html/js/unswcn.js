@@ -29,6 +29,20 @@ var app=function(){
 			var q=$(this).val();
 			that.searchClasses(q);
 		});
+		/*$('input.search').typeahead({
+			source:this.data.classes,
+			items:6,
+			highligher=function(c){
+
+				return [
+					'<li>',
+						'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
+						'<span class="clear">'+c.course_name+'</span>',
+						'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
+					'</li>'
+				].join('');
+			}
+		});*/
 
 
 		$.ajax({
