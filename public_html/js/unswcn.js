@@ -12,6 +12,7 @@ var app=function(){
 					'<span class="fa fa-comment"></span>',
 					'<span class="title">UNSW class notify</span>',
 				'</div>',
+				'<input class="search" placeholder="Search for classes"/>',
 				'<div class="scrollableView">',
 					'<p>UNSW COURSE NOTIFY</p>',
 					'<p>UNSW COURSE NOTIFY</p>',

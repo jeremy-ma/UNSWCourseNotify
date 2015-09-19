@@ -29,11 +29,28 @@ div.scrollableView{
     bottom: 0;
     overflow-y: auto;
     position: absolute;
-    top: 50px;
+    top: 90px;
     width: 100%;
 }
 
-
+#app input.search{
+    border:none;
+    border-left:15px solid #424242;
+    width:100%;
+    margin:0;
+    padding:0;
+    height:40px;
+    border-left:15px solid #f2f2f2;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background:#f2f2f2;
+    font-family:'GillSansMTProLight';
+    font-size:18px;
+}
 
 
 
