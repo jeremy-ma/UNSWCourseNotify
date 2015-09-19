@@ -113,7 +113,7 @@ var app=function(){
 			}
 			htmlString+=[
 				'<li class="'+searchClasses+'">',
-					'<span>'+c.course_code+' ['+c.type+'] '+c.section_time+'</span>',
+					'<span class="title">'+c.course_code+' '+c.section_code+'</span>',
 					'<span class="clear">'+c.course_name+'</span>',
 					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
 				'</li>'

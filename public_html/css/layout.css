@@ -76,6 +76,11 @@ div.scrollableView h1{
 #class_list ul li.active{
 	border-left:5px solid #5093e1;
 }
+#class_list ul li span.title{
+	font-size:30px;
+	display:block;
+	margin-top:5px;
+}
 #class_list ul li span.clear{
 	padding-left: 15px;
 	display:block;
