@@ -14,6 +14,7 @@ CREATE TABLE `users` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`email` varchar(300) not null,
+	`mobile` varchar(15) not null,
 	UNIQUE(`email`),
 	UNIQUE(`mobile`),
 	PRIMARY KEY (`id`)
