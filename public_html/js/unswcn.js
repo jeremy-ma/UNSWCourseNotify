@@ -25,7 +25,9 @@ var app=function(){
 						'<ul></ul>',
 					'</div>',
 				'</div>',
-				'<div class="course_basket"></div>',
+				'<div class="course_basket">',
+					'<span class="fa fa-shopping-cart"></span>',
+				'</div>',
 				'<div class="submit">Notify me!</div>',
 			'</div>',
 		].join('');
