@@ -124,7 +124,19 @@ var app=function(){
 			this.savedResults.splice(this.savedResults.indexOf(c.id),1);
 			obj.removeClass('active');
 		}
+		this.updateBasket();
 		console.log(this.savedResults);
+	}
+	this.updateBasket=function(){
+		var htmlString='<ul>';
+		for(var i=0;i<this.savedResults.length;i++){
+			var c=this.data.classes[i];
+			htmlString+=[
+				'<li>'+c+'</li>',
+			].join('');
+		}
+		htmlString+='</ul>';
+		$('div.course_basket').html(htmlString);
 	}
 	this.init();
 }
