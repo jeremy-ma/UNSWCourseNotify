@@ -26,6 +26,7 @@ app.post('/classes', function(req, res){
 	console.log(req.body);
 	var out={};
 	var p=req.body;
+
 	pool.getConnection(function(err,connection){
 		if(err){
 			connection.release();
@@ -54,7 +55,14 @@ app.post('/classes/checkout', function(req, res){
 	console.log(req.body);
 	var out={};
 	var p=req.body;
-	/*pool.getConnection(function(err,connection){
+
+	//validate email
+	if(!validator.isEmail(p.email)){
+		out['error']='Invalid email';
+		res.json(out);
+		return;
+	}
+	pool.getConnection(function(err,connection){
 		if(err){
 			connection.release();
 			out['error']='There was a problem.';
@@ -75,8 +83,7 @@ app.post('/classes/checkout', function(req, res){
 			console.log(out);
 			res.json(out);
 		});
-	});*/
-	res.json(out);
+	});
 });
 
 
