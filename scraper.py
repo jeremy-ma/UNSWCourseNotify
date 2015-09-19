@@ -149,7 +149,8 @@ if __name__ == '__main__':
     watchl = database.getwatchlist()
     matched_users = check_watchlist(watchl)
     for user in matched_users:
-        send_email(user)
+        #send_email(user)
+        continue
 
     database.removeUsers(matched_users)
 
