@@ -88,11 +88,11 @@ div.scrollableView h1{
 
 
 div.submit{
-	background: #55c989 none repeat scroll 0 0;
+	background:#bbb  none repeat scroll 0 0;
     bottom: 0;
     box-sizing: border-box;
     color: #fff;
-    cursor: pointer;
+    cursor: default;
     font-family: "GillSansMTProLight";
     height: 50px;
     left: 0;
@@ -101,6 +101,10 @@ div.submit{
     text-align: center;
     vertical-align: top;
     width: 100%;
+}
+div.submit.active{
+	background:#55c989;
+	cursor:pointer;
 }
 
 div.course_basket{
