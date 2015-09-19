@@ -58,7 +58,8 @@ var app=function(){
 			var c=classes[i];
 			htmlString+=[
 				'<li>',
-					c.course_code,
+					'<h4>'+c.course_code+' '+c.type+'</h4>',
+					'<span>'+c.course_name+'</span>',
 				'</li>'
 			].join('');
 		}
