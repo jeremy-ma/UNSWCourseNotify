@@ -30,6 +30,30 @@ body{
 
 
 
+@font-face {
+    font-family: 'GillSansMTProBold';
+    src: url('fonts/files/gillsansmtpro-bold.eot');
+    src: url('fonts/files/gillsansmtpro-bold.eot') format('embedded-opentype'),
+         url('fonts/files/gillsansmtpro-bold.woff') format('woff'),
+         url('fonts/files/gillsansmtpro-bold.ttf') format('truetype'),
+         url('fonts/files/gillsansmtpro-bold.svg#GillSansMTProBold') format('svg');
+}
+@font-face {
+    font-family: 'GillSansMTProMedium';
+    src: url('fonts/files/gillsansmtpro-medium.eot');
+    src: url('fonts/files/gillsansmtpro-medium.eot') format('embedded-opentype'),
+         url('fonts/files/gillsansmtpro-medium.woff') format('woff'),
+         url('fonts/files/gillsansmtpro-medium.ttf') format('truetype'),
+         url('fonts/files/gillsansmtpro-medium.svg#GillSansMTProMedium') format('svg');
+}
+@font-face {
+    font-family: 'GillSansMTProLight';
+    src: url('fonts/files/gillsansmtpro-light.eot');
+    src: url('fonts/files/gillsansmtpro-light.e--ot') format('embedded-opentype'),
+         url('fonts/files/gillsansmtpro-light.woff') format('woff'),
+         url('fonts/files/gillsansmtpro-light.ttf') format('truetype'),
+         url('fonts/files/gillsansmtpro-light.svg#GillSansMTProLight') format('svg');
+}
 
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
