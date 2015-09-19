@@ -99,10 +99,10 @@ div.submit{
 }
 
 div.course_basket{
-	background:#aad7b0;
+	background:#fff;
     bottom: 50px;;
     box-sizing: border-box;
-    color: #fff;
+    color: #bbb;
     font-family: "GillSansMTProLight";
     height: 100px;
     left: 0;
@@ -111,6 +111,11 @@ div.course_basket{
     text-align: center;
     vertical-align: top;
     width: 100%;
+}
+div.course_basket ul{
+	padding:0px;
+	list-style: none;
+	margin:0px;
 }
 
 
