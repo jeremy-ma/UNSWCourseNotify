@@ -9,7 +9,7 @@ def scrape_subject(url, semester):
 
     r = requests.get(url)
     data = r.text
-    soup = BeautifulSoup(data)
+    soup = BeautifulSoup(data,"html.parser")
 
     regex = re.compile(r'(\w{3} [-:\d]+)')
     sectionlist = []
@@ -119,7 +119,7 @@ def insertList(l):
         for section in l:
             #insert uts into the list of organisations
             query=("INSERT INTO sections (course_code,course_name, sem, type, enr_max, enr_count, status) VALUES(%s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
-             cursor.execute(query,(
+                cursor.execute(query,(
                 section['course_code'], section['course_name'],section['semester'],section['type'],
                 section['enr_max'],section['enr_count'],section['status']
                 ))
