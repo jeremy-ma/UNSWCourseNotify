@@ -178,7 +178,7 @@ var app=function(){
 }
 
 function warning(message){
-	alert(message);
+	sweetAlert("Error", message, "error");
 }
 
 function regexEscape(str) {
