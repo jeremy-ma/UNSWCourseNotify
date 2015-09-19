@@ -116,8 +116,7 @@ def insertList(l):
             #insert uts into the list of organisations
             query=("INSERT INTO sections (course_code,course_name, sem, type, enr_max, enr_count, status) VALUES(%s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);")
              cursor.execute(query,(
-                section['course_code'], section['course_name'],section['semester'],section['type'],
-                section['enr_max'],section['enr_count'],section['status']
+                section['course_code'], section['course_name'],section['semester'],section['type'],section['enr_max'],section['enr_count'],section['status']
                 ))
 
 
