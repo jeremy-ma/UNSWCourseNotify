@@ -78,7 +78,7 @@ var app=function(){
 		for(var i=0;i<classes.length;i++){
 			var c=classes[i];
 			htmlString+=[
-				'<li data-id="'+c.id+'">',
+				'<li data-id="'+c.id+'" class="'+classString+'">',
 					'<h4>'+c.course_code+' ['+c.type+'] '+c.section_time+'</h4>',
 					'<span class="clear">'+c.course_name+'</span>',
 					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
@@ -107,8 +107,12 @@ var app=function(){
 		}
 		for(var i=0;i<results.length;i++){
 			var c=this.data.classes[results[i]];
+			var searchClasses='';
+			if(this.savedResults.indexOf(c.id)!=-1){
+				searchClasses='active';
+			}
 			htmlString+=[
-				'<li>',
+				'<li class="'+searchClasses+'">',
 					'<span>'+c.course_code+' ['+c.type+'] '+c.section_time+'</span>',
 					'<span class="clear">'+c.course_name+'</span>',
 					'<span class="clear">'+c.enr_count+'/'+c.enr_max+'</span>',
@@ -164,6 +168,7 @@ var app=function(){
 				console.log('data sent successfully');
 				if(typeof data.error=='undefined'){
 					//good nothing broke perform actions
+					success('Congrats!','Your preferences have been saved!');
 				}else{
 					//display the error
 					warning(data.error);
@@ -176,7 +181,9 @@ var app=function(){
 	}
 	this.init();
 }
-
+function success(title,text){
+	swal(title, text, "success");
+}
 function warning(message){
 	sweetAlert("Error", message, "error");
 }
