@@ -110,6 +110,11 @@ var app=function(){
 	}
 	this.clicked_result=function(c){
 		console.log('adding to basket:'+c.id);
+		//add only if not already in results
+		if(this.savedResults.indexOf(c.id)==-1){
+			this.savedResults.push(c.id);
+		}
+		console.log(this.savedResults);
 	}
 	this.init();
 }
