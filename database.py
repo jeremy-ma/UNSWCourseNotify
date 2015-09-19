@@ -43,4 +43,4 @@ def insertList(l):
 if __name__ == '__main__':
     #url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
     l = scrape_everything('s2')
-    insertLIst(l)
+    insertList(l)
