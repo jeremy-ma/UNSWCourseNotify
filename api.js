@@ -49,7 +49,35 @@ app.post('/classes', function(req, res){
 		});
 	});
 });
-
+app.post('/classes/checkout', function(req, res){
+	console.log('--------/classes/checkout');
+	console.log(req.body);
+	var out={};
+	var p=req.body;
+	/*pool.getConnection(function(err,connection){
+		if(err){
+			connection.release();
+			out['error']='There was a problem.';
+			console.log(out);
+			res.json(out);
+			return;
+		}
+		var sql='SELECT * FROM sections';
+		connection.query(sql,[],function(err,result){
+			connection.release();
+			if(err){
+				out['error']='There was a problem.';
+				console.log(out);
+				res.json(out);
+				return;
+			}
+			out['classes']=result;
+			console.log(out);
+			res.json(out);
+		});
+	});*/
+	res.json(out);
+});
 
 
 
