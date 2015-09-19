@@ -9,6 +9,7 @@ CREATE TABLE `sections` (
 	`type` varchar(3000),
 	`enr_max` int(11) NOT NULL,
 	`enr_count` int(11) NOT NULL,
+	`section_time` varchar(300) NOT NULL,
 	`status` varchar(300) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
