@@ -4,6 +4,7 @@ import pdb
 import re
 from collections import defaultdict
 from credentials import mailgun_sandboxkey
+import database
 
 current_semester = 's2'
 
