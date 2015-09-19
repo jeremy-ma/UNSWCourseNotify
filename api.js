@@ -87,6 +87,10 @@ app.post('/classes/checkout', function(req, res){
 			}
 			var u_id=result.insertId;
 			var sql='INSERT INTO user_courses (u_id,section_id) VALUES ? ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id);';
+			var insertArray=[];
+			for(var i=0;i<p.results.length;i++){
+				insertArray.push([u_id,p.results[i]]);
+			}
 			connection.query(sql,insertArray,function(err,result){
 				connection.release();
 				if(err){
