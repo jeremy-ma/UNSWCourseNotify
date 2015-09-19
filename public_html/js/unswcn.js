@@ -19,7 +19,7 @@ var app=function(){
 					'<span class="title">UNSW course notify</span>',
 				'</div>',
 				'<input class="text" id="email" placeholder="Your email address"/>',
-				'<input class="search text" placeholder="Search for classes"/>',
+				'<input class="search text" placeholder="Search for classes eg.(ACCT1501)"/>',
 				'<div class="scrollableView">',
 					'<div id="class_list">',
 						'<ul></ul>',
@@ -96,7 +96,7 @@ var app=function(){
 		var pattern=new RegExp('^'+regexEscape(query),'i');
 		for(var i=0;i<this.data.classes.length;i++){
 			var c=this.data.classes[i];
-			if(pattern.test(c.course_code)){
+			if(pattern.test(c.course_code+' '+c.section_code)){
 				results.push(i);
 			}
 			if(results.length>50){
