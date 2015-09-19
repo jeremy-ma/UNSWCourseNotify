@@ -5,6 +5,7 @@ html{
 body{
 	padding:0px;
 	margin:0px;
+	font-family: 'GillSansMTProLight';
 }
 
 #app div.header{
@@ -14,8 +15,15 @@ body{
 	color:#fff;
 }
 
-#app div.header span{
+#app div.header span.title{
 	font-size:30px;
+	line-height: 50px;
+	padding-left:15px;
+}
+#app div.header span.fa{
+	font-size:30px;
+	padding-left: 15px;
+	line-height: 50px;
 }
 
 

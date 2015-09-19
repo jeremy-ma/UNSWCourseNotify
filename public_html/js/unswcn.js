@@ -9,7 +9,8 @@ var app=function(){
 		var htmlString=[
 			'<div id="app">',
 				'<div class="header">',
-					'<span>UNSW class notify</span>',
+					'<span class="fa fa-comment"></span>',
+					'<span class="title">UNSW class notify</span>',
 				'</div>',
 				'<div class="scrollableView">',
 				'</div>',
