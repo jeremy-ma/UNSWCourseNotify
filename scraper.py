@@ -132,8 +132,7 @@ def send_email(user):
     from_ = "UNSWCourseNotify <mailgun@timeweave.com.au>"
     to = "UNSW Student <" + user[6] + ">"
     subject =  user[9] + ' ' + user[11] + " is now OPEN for enrolment"
-    text = subject + "\nGo and enrol!!!\nPlease visit www.timeweave.com.au to be notified when it opens up again\
-                      (otherwise you won't be notified again.)\n\nUNSWCourseNotify"
+    text = subject + "\nGo and enrol!!!\nIf you found this app useful please visit www.timeweave.com.au for other useful tools\n\nUNSWCourseNotify"
     return requests.post(
         "https://api.mailgun.net/v3/sandbox961793f019cd4f928eda465344bf3afb.mailgun.org/messages",
         auth=("api", mailgun_sandboxkey),
