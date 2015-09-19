@@ -2,7 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 import pdb
 import re
+from collections import defaultdict
+from credentials import mailgun_sandboxkey
 
+current_semester = 's2'
 
 def scrape_subject(url, semester):
 
@@ -40,13 +43,13 @@ def scrape_subject(url, semester):
                 section_dict = {}
                 section_dict['course_code'] = code
                 section_dict['course_name'] = name
-                section_dict['id'] = section_id
+                section_dict['section_code'] = section_id
                 section_dict['type'] = type_
                 section_dict['status'] = status
                 section_dict['enr_count'] = enrolled
                 section_dict['enr_max'] = capacity
                 section_dict['time'] = time
-                section_dict['semester'] = semester
+                section_dict['sem'] = semester
 
                 sectionlist.append(section_dict)
                 #pdb.set_trace()
@@ -98,10 +101,57 @@ def scrape_everything(semester):
 
     return sectionlist
 
+def check_watchlist(watchl):
+    sections = scrape_everything(current_semester)
+    catalog = defaultdict(dict)
+    matched_users = []
+    for section in sections:
+        #chuck everything into something sortable
+        catalog[section['course_code']][section['section_code']] = section['status']
+
+    for user in watchl:
+        try:
+            if 'Open' in catalog[user['course_code']][user['section_code']]:
+                matched_users.append(user)
+
+        except:
+            print "catastrophic error"
+
+
+
+
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/sandbox961793f019cd4f928eda465344bf3afb.mailgun.org/messages",
+        auth=("api", mailgun_sandboxkey),
+        data={"from": "Matt Duong <mailgun@timeweave.com.au>",
+              "to": "Jeremy Ma <jeremyma.cx@gmail.com>",
+              "subject": "Hello Jma",
+              "text": "Congratulations Jma, you just sent an email with Mailgun!  You are truly awesome!  You can see a record of this email in your logs: https://mailgun.com/cp/log .  You can send up to 300 emails/day from this sandbox server.  Next, you should add your own domain so you can send 10,000 emails/month for free."})
+
+def send_email(user):
+    from_ = "UNSWCourseNotify <mailgun@timeweave.com.au>"
+    to = "UNSW Student <" + user['email'] + ">"
+    subject =  user['course_code'] + ' ' + user['section_code'] + "is now OPEN for enrolment"
+    text = subject + "\nGo and enrol!!!\nPlease visit www.timeweave.com.au to be notified when it opens up again\
+                      (otherwise you won't be notified again.)\n\nUNSWCourseNotify"
+    return requests.post(
+        "https://api.mailgun.net/v3/sandbox961793f019cd4f928eda465344bf3afb.mailgun.org/messages",
+        auth=("api", mailgun_sandboxkey),
+        data={"from": from_,
+              "to": to,
+              "subject": subject,
+              "text": text})
 
 if __name__ == '__main__':
 
-    url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
+    watchl = database.getwatchlist()
+    matched_users = check_watchlist(watchl)
+    for user in matched_users:
+        send_email(user)
 
-    l = scrape_everything('s2')
-    print l
+    database.removeUsers(matched_users)
+
+    #send_simple_message()
+    #user = {"email": 'jeremyma.cx@gmail.com', 'course_code': 'ELEC3117', 'section_code': 'M14A'}
+    #send_email(user)
