@@ -153,7 +153,7 @@ var app=function(){
 		//send the basket
 		$.ajax({
 			url:BASE_URL+'api/classes/checkout',
-			data:that.data.savedResults,
+			data:{'results':that.savedResults},
 			type:"POST",
 			success:function(data){
 				console.log('data sent successfully');
