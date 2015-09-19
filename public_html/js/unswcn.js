@@ -147,6 +147,26 @@ var app=function(){
 		htmlString+='</ul>';
 		$('div.course_basket').html(htmlString);
 	}
+	this.checkout=function(){
+		//send the basket
+		$.ajax({
+			url:BASE_URL+'api/classes/chcekout',
+			data:that.data.savedResults,
+			type:"POST",
+			success:function(data){
+				console.log('data sent successfully');
+				if(typeof data.error=='undefined'){
+					//good nothing broke perform actions
+				}else{
+					//display the error
+					warning(data.error);
+				}
+			},
+			error:function(){
+				console.log('there was an error with the request');
+			}
+		});
+	}
 	this.init();
 }
 
