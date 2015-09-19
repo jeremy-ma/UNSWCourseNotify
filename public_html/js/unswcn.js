@@ -41,7 +41,7 @@ var app=function(){
 			var index=$(this).index();
 			var c=that.data.classes[that.resultList[index]];
 			that.clicked_result(c,$(this));
-		}).on('click','div.submit',function(){
+		}).on('click','div.submit.active',function(){
 			that.checkout();
 		});
 
