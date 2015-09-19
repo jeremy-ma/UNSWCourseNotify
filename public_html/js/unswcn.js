@@ -27,6 +27,7 @@ var app=function(){
 
 		$('#app').on('input','input.search',function(){
 			var q=$(this).val();
+			that.searchClasses(q);
 		});
 
 
@@ -66,6 +67,9 @@ var app=function(){
 		}
 		htmlString+='</ul>';
 		$('#class_list').html(htmlString);
+	}
+	this.searchClasses=function(query){
+		console.log(query);
 	}
 	this.init();
 }
