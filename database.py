@@ -4,21 +4,48 @@ import pdb
 import re
 import mysql.connector
 from scraper import *
+import sys
+
+config = {
+    'user': 'unswcn',
+    'password': 'password',
+    'host': 'localhost',
+    'database': 'unswcn',
+    'raise_on_warnings': True
+}
+
 
 def get_watchlist():
-    return 'hello world'
+    db = mysql.connector.connect(**config)
 
+    cursor = db.cursor()
+    #begin insertion of data
+    try:
+        query=("SELECT * ,user_courses.id as uc_id FROM unswcn.user_courses \
+LEFT JOIN users ON user_courses.u_id=users.id \
+LEFT JOIN sections ON user_courses.section_id=sections.id")
+        cursor.execute(query,())
+        rows=cursor.fetchall()
+
+
+
+    except mysql.connector.Error as err:
+        print err
+        db.rollback()
+        sys.exit()
+
+    db.commit()
+
+    cursor.close()
+    db.close()
+
+    return rows
+
+def removeUsers(users):
+    return
 #insert data
 def insertList(l):
     #connect to database
-
-    config = {
-        'user': 'unswcn',
-        'password': 'password',
-        'host': 'localhost',
-        'database': 'unswcn',
-        'raise_on_warnings': True
-    }
     db = mysql.connector.connect(**config)
 
     cursor = db.cursor()
@@ -46,5 +73,6 @@ def insertList(l):
 
 if __name__ == '__main__':
     #url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
-    l = scrape_everything('s2')
-    insertList(l)
+    #l = scrape_everything('s2')
+    #insertList(l)
+    get_watchlist()

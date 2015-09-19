@@ -91,7 +91,7 @@ app.post('/classes/checkout', function(req, res){
 			for(var i=0;i<p.results.length;i++){
 				insertArray.push([u_id,p.results[i]]);
 			}
-			connection.query(sql,insertArray,function(err,result){
+			connection.query(sql,[insertArray],function(err,result){
 				connection.release();
 				if(err){
 					out['error']='There was a problem.';
