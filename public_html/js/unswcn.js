@@ -38,6 +38,8 @@ var app=function(){
 			var index=$(this).index();
 			var c=that.data.classes[that.resultList[index]];
 			that.clicked_result(c,$(this));
+		}).on('click','div.submit',function(){
+			that.checkout();
 		});
 
 
@@ -150,7 +152,7 @@ var app=function(){
 	this.checkout=function(){
 		//send the basket
 		$.ajax({
-			url:BASE_URL+'api/classes/chcekout',
+			url:BASE_URL+'api/classes/checkout',
 			data:that.data.savedResults,
 			type:"POST",
 			success:function(data){
