@@ -19,7 +19,7 @@ def get_watchlist():
     db = mysql.connector.connect(**config)
 
     cursor = db.cursor()
-    #begin insertion of data
+    #begin selection of data
     try:
         query=("SELECT * ,user_courses.id as uc_id FROM unswcn.user_courses \
 LEFT JOIN users ON user_courses.u_id=users.id \
@@ -40,11 +40,14 @@ LEFT JOIN sections ON user_courses.section_id=sections.id")
     return rows
 
 def removeUsers(users):
+    db = mysql.connector.connect(**config)
+
+    cursor = db.cursor()
     print '----removing users'
     try:
-        query=("DELETE FROM user_courses WHERE user_courses.id=?")
+        query=("DELETE FROM user_courses WHERE user_courses.id=%s")
         for u in users:
-            cursor.execute(query,(u[0]))
+            cursor.execute(query,([u[0]]))
 
     except mysql.connector.Error as err:
         print err
