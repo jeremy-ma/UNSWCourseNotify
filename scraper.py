@@ -54,10 +54,6 @@ def scrape_subject(url, semester):
 
     return sectionlist
 
-
-
-
-
 def check_end(row):
     # check the row if its past the end of the subject
     clas = row.get('class')
@@ -71,11 +67,37 @@ def check_end(row):
     else:
         return False
 
+def scrape_everything(semester):
+    url = "http://classutil.unsw.edu.au/"
+    r = requests.get(url)
+    data = r.text
+    soup = BeautifulSoup(data)
+
+    for row in soup.findAll('tr'):
+        clas = row.get('class')
+        if clas != None:
+            clas = clas[0]
+        if clas != 'rowHighlight' and clas != 'rowLowLight':
+            continue
+        columns = row.findAll(class_='data')
+        #print columns
+        if semester == 's2':
+            column = columns[2]
+        elif semester == 's1':
+            column = columns[1]
+        elif semester == 'sum':
+            column = columns[0]
+
+        if column.find('a') is not None:
+            link = column.find('a').get('href')
+            subject_url = url + link
+            scrape_subject(subject_url,semester)
+
 
 
 if __name__ == '__main__':
 
     url = 'http://classutil.unsw.edu.au/ELEC_S2.html'
 
-    scrape_subject(url,'s2')
+    scrape_everything('s2')
 
