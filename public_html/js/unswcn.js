@@ -155,6 +155,11 @@ var app=function(){
 		}
 		htmlString+='</ul>';
 		$('div.course_basket').html(htmlString);
+		if(this.savedResults.length>0){
+			$('div.submit').addClass('active');
+		}else{
+			$('div.submit').removeClass('active');
+		}
 	}
 	this.checkout=function(){
 		//get email
