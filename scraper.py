@@ -146,9 +146,8 @@ def send_email(user):
 
 if __name__ == '__main__':
 
-    watchl = database.getwatchlist()
     watchl = database.get_watchlist()
-    matched_users = check_watchlist(watchl)
+    matched_users = getwatchlist(watchl)
     for user in matched_users:
         #send_email(user)
         continue
