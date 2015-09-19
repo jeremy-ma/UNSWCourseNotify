@@ -111,12 +111,8 @@ def getmatches(watchl):
         catalog[section['course_code']][section['section_code']] = section['status']
 
     for user in watchl:
-        try:
-            if 'Open' in catalog[user['course_code']][user['section_code']]:
+        if 'Open' in catalog[user[9]][user[11]]:
                 matched_users.append(user)
-
-        except:
-            print "catastrophic error"
 
     return matched_users
 
@@ -134,8 +130,8 @@ def send_simple_message():
 
 def send_email(user):
     from_ = "UNSWCourseNotify <mailgun@timeweave.com.au>"
-    to = "UNSW Student <" + user['email'] + ">"
-    subject =  user['course_code'] + ' ' + user['section_code'] + "is now OPEN for enrolment"
+    to = "UNSW Student <" + user[6] + ">"
+    subject =  user[9] + ' ' + user[11] + " is now OPEN for enrolment"
     text = subject + "\nGo and enrol!!!\nPlease visit www.timeweave.com.au to be notified when it opens up again\
                       (otherwise you won't be notified again.)\n\nUNSWCourseNotify"
     return requests.post(
@@ -149,9 +145,11 @@ def send_email(user):
 if __name__ == '__main__':
 
     watchl = database.get_watchlist()
+    print watchl
     matched_users = getmatches(watchl)
     for user in matched_users:
-        #send_email(user)
+        send_email(user)
+        print 'sent email to'+ user[6]
         continue
 
     database.removeUsers(matched_users)
