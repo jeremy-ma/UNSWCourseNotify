@@ -112,9 +112,16 @@ var app=function(){
 		console.log('adding to basket:'+c.id);
 		//add only if not already in results
 		if(this.savedResults.indexOf(c.id)==-1){
+			if(this.savedResults.length>=4){
+				warning('Maximum of 4 subjects');
+				return;
+			}
 			this.savedResults.push(c.id);
 			obj.addClass('active');
 		}else{
+
+			//remove from saved results
+			this.savedResults.splice(this.savedResults.indexOf(c.id),1);
 			obj.removeClass('active');
 		}
 		console.log(this.savedResults);
