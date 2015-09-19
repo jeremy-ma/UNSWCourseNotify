@@ -21,6 +21,34 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
+app.post('/classes', function(req, res){
+	console.log('--------/classes');
+	console.log(req.body);
+	var out={};
+	var p=req.body;
+	pool.getConnection(function(err,connection){
+		if(err){
+			connection.release();
+			out['error']='There was a problem.';
+			console.log(out);
+			res.json(out);
+			return;
+		}
+		var sql='SELECT * FROM sections';
+		connection.query(sql,[],function(err,result){
+			connection.release();
+			if(err){
+				out['error']='There was a problem.';
+				console.log(out);
+				res.json(out);
+				return;
+			}
+			out['classes']=result;
+			console.log(out);
+			res.json(out);
+		});
+	});
+});
 
 
 
