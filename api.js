@@ -8,6 +8,15 @@ var validator = require('validator');
 
 var app = express();
 
+var mysql=require('mysql');
+
+var pool  = mysql.createPool({
+	host : "localhost",
+	user : "unswcn",
+	password: "password",
+	database: "unswcn"
+});
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
